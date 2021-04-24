@@ -11,20 +11,35 @@ namespace Lab12Var4
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Выберите задание\n1\n2");
+            bool q = Int32.TryParse(Console.ReadLine(), out int task);
+            while (!q)
+            {
+                Console.WriteLine("Введите цифру!");
+                q = Int32.TryParse(Console.ReadLine(), out task);
+            }
+            while ((task < 1) | (task > 2))
+            {
+                Console.WriteLine("Введиет цифру от 1 до 2");
+                q = Int32.TryParse(Console.ReadLine(), out task);
+            }
+            switch (task)
+            {
+                case 1:
             Organization k = new Organization();
-            Organization Org = new Organization("Организация",235);
-            Factory Fac = new Factory("Фабрика", 450, 35,"Лондон");
+            Organization Org = new Organization("Организация", 235);
+            Factory Fac = new Factory("Фабрика", 450, 35, "Лондон");
             Insurance_Company Ins = new Insurance_Company("Страховая компания", 600, 1990, 98);
             Library Lib = new Library("Библиотека", 500, 7, 700);
             Shipbuilding_company Ship = new Shipbuilding_company("Кораблестроительная фирма", 490, 900000, 35);
-            Organization[] mas = new Organization[5] { Org, Fac, Ins, Lib, Ship }; 
+            Organization[] mas = new Organization[5] { Org, Fac, Ins, Lib, Ship };
             List<Organization> list1 = new List<Organization>(mas);
             list1.PrintList();
             Console.ReadKey();
             Organization l = new Organization();
-            List<Organization>.Point<Organization> p; /*= list1.FindLast();*/
+            Point<Organization> p; /*= list1.FindLast();*/
             //Console.WriteLine(p.ToString());
-            Organization [] mas1 = new Organization [5];
+            Organization[] mas1 = new Organization[5];
             //for (int i = 0; i < mas.Length; i++)
             //    mas1[i] = mas[mas.Length - 1 - i];
             //foreach (Organization g in mas1)
@@ -34,8 +49,8 @@ namespace Lab12Var4
             if (p.data.Number_of_employees % 2 == 0)
                 p = null;
             else
-            while (p.next.data.Number_of_employees % 2 != 0)
-                p = p.next;
+                while (p.next.data.Number_of_employees % 2 != 0)
+                    p = p.next;
             p.next = p.next.next;
             list1.PrintList();
             Console.ReadKey();
@@ -70,7 +85,7 @@ namespace Lab12Var4
             vr2 = p2;
             DoubleList<Organization>.DoublePoint<Organization> p1 = list2.beg;
             DoubleList<Organization>.DoublePoint<Organization> temp1 = new DoubleList<Organization>.DoublePoint<Organization>(fac1);
-            for (int i = 1; i < nom-1; i++)
+            for (int i = 1; i < nom - 1; i++)
                 p1 = p1.next;
             vr2 = p2;
             DoubleList<Organization>.DoublePoint<Organization> vr1;
@@ -88,8 +103,8 @@ namespace Lab12Var4
             Console.ReadKey();
             Console.WriteLine("Создадим идеально сбалансированное бинарное дерево");
             int size;
-            List<Organization>.Point < Organization > Tree = new List<Organization>.Point<Organization>();
-            List<Organization>.Point<Organization> p3 = new List<Organization>.Point<Organization>();
+            Point<Organization> Tree = new Point<Organization>();
+            Point<Organization> p3 = new Point<Organization>();
             Console.WriteLine("Введите размер дерева");
             bool o1 = Int32.TryParse(Console.ReadLine(), out size);
             while (!o1)
@@ -102,24 +117,38 @@ namespace Lab12Var4
                 Console.WriteLine("Введите положительное число");
                 o1 = Int32.TryParse(Console.ReadLine(), out size);
             }
-            Tree = List<Organization>.Point<Organization>.IdealTree1(size, p3);
-            List<Organization>.Point<Organization>.ShowTree(List<Organization>.Point<Organization>.Root, 3);
+            Tree = Point<Organization>.IdealTree1(size, p3);
+            Point<Organization>.ShowTree(Point<Organization>.Root, 3);
             Console.ReadKey();
             Console.WriteLine("Найдем минимальный элемент в дереве");
             Organization org;
-            org = Tree.Run(List<Organization>.Point<Organization>.Root);//нужно подать корень в качестве параметра
+            org = Tree.Run(Point<Organization>.Root);//нужно подать корень в качестве параметра
             Console.WriteLine(org.ToString());
             Console.ReadKey();
             Console.WriteLine("Преобразуем идеальное дерево в дерево поиска");
-            List<Organization>.Point<Organization> NewRoot = new List<Organization>.Point<Organization>(org);
-            List<Organization>.Point<Organization> FindTree = new List<Organization>.Point<Organization>();
+            Point<Organization> NewRoot = new Point<Organization>(org);
+            Point<Organization> FindTree = new Point<Organization>();
             foreach (Organization op in mas)
-                if (op == List<Organization>.Point<Organization>.Root.data)
+                if (op == Point<Organization>.Root.data)
                     continue;
                 else
                     FindTree = FindTree.Add(NewRoot, op);
-            List<Organization>.Point<Organization>.ShowTree(FindTree, 1);
+            Point<Organization>.ShowTree(FindTree, 1);
             Console.ReadKey();
+                    break;
+                case 2:
+                    Organization k1 = new Organization();
+                    Organization Org1 = new Organization("Организация", 235);
+                    Factory Fac1 = new Factory("Фабрика", 450, 35, "Лондон");
+                    Insurance_Company Ins1 = new Insurance_Company("Страховая компания", 600, 1990, 98);
+                    Library Lib1 = new Library("Библиотека", 500, 7, 700);
+                    Shipbuilding_company Ship1 = new Shipbuilding_company("Кораблестроительная фирма", 490, 900000, 35);
+                    Organization[] mas4 = new Organization[5] { Org1, Fac1, Ins1, Lib1, Ship1 };
+                    Console.WriteLine("Кольцевой двусвязный список");
+                    DoubleListConnection<Organization> list3 = new DoubleListConnection<Organization>(mas4);
+                    Console.ReadKey();
+                    break;
+        }
         }
     }
 }

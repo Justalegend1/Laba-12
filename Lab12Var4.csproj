@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoubleList.cs" />
+    <Compile Include="DoubleListConnection.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="IdealTree.cs" />
     <Compile Include="IInit.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Library.cs" />
     <Compile Include="List.cs" />
     <Compile Include="Organization.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shipbuilding_Company.cs" />

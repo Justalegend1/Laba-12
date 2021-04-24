@@ -64,6 +64,38 @@ namespace Lab12Var4
                 }
                 Console.WriteLine();
             }
-        
+        public void Delete(int nom)
+        {
+            DoublePoint<T> dp1;
+            DoublePoint<T> dp = beg;
+            for (int t = 0; t < nom; t++)
+            {
+                dp = dp.next;
+            }
+            dp.next = dp.next.next;
+            dp1 = dp;
+            dp = dp.next.next;
+            dp.pred = dp1;
+        }
+        static Random rnd = new Random();
+        public void Add(int nom, params T[]mas)
+        {
+            DoublePoint<T> p1 = beg;
+            DoublePoint<T> temp1 = new DoublePoint<T>(mas[rnd.Next(0,mas.Length-1)]);
+            DoublePoint<T> vr1;
+            DoublePoint<T> vr2;
+            DoublePoint<T> p2 = beg;
+            for (int i = 1; i < nom; i++)
+                p2 = p2.next;
+            vr2 = p2;
+            for (int i = 1; i < nom - 1; i++)
+                p1 = p1.next;
+            vr1 = p1;
+            p1.next = temp1;
+            p1 = p1.next;
+            p1.pred = vr1;
+            p1.next = vr2;
+
+        }
     }
 }

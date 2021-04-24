@@ -8,12 +8,12 @@ namespace Lab12Var4
 {
     public class DoubleListConnection<T>
     {
-        public DoublePointConnection<T> beg = null;
+        public DoublePointConnection<Organization> beg = null;
         public class DoublePointConnection<T>
         {
             public T data;
-            public DoublePointConnection<T> next;
-            public DoublePointConnection<T> pred;
+            public DoublePointConnection<Organization> next;
+            public DoublePointConnection<Organization> pred;
             public DoublePointConnection()
             {
                 data = default;
@@ -34,15 +34,15 @@ namespace Lab12Var4
         }
         public DoubleListConnection()
         { }
-        public DoubleListConnection(params T[] mas)
+        public DoubleListConnection(params Organization[] mas)
         {
-            DoublePointConnection<T> r;
-            beg = new DoublePointConnection<T>(mas[0]);
-            DoublePointConnection<T> p = beg;
+            DoublePointConnection<Organization> r;
+            beg = new DoublePointConnection<Organization>(mas[0]);
+            DoublePointConnection<Organization> p = beg;
             for (int i = 1; i < mas.Length; i++)
             {
-                DoublePointConnection<T> temp = new DoublePointConnection<T>(mas[i]);
-                DoublePointConnection<T> vr = new DoublePointConnection<T>(mas[i - 1]);
+                DoublePointConnection<Organization> temp = new DoublePointConnection<Organization>(mas[i]);
+                DoublePointConnection<Organization> vr = new DoublePointConnection<Organization>(mas[i - 1]);
                 p.next = temp;
                 p = temp;
                 p.pred = vr;
@@ -59,7 +59,7 @@ namespace Lab12Var4
         {
             get
             {
-                DoublePointConnection<T> k = beg;
+                DoublePointConnection<Organization> k = beg;
                 int count = 1;
                 while (k != beg)
                 {
@@ -71,8 +71,8 @@ namespace Lab12Var4
         }
         public void Delete(int nom)
         {
-            DoublePointConnection<T> dp1;
-            DoublePointConnection<T> dp = beg;
+            DoublePointConnection<Organization> dp1;
+            DoublePointConnection<Organization> dp = beg;
             for (int t = 0; t < nom; t++)
             {
                 dp = dp.next;
@@ -83,13 +83,13 @@ namespace Lab12Var4
             dp.pred = dp1;
         }
         static Random rnd = new Random();
-        public void Add(int nom, params T[] mas)
+        public void Add(int nom, params Organization[] mas)
         {
-            DoublePointConnection<T> p1 = beg;
-            DoublePointConnection<T> temp1 = new DoublePointConnection<T>(mas[rnd.Next(0, mas.Length - 1)]);
-            DoublePointConnection<T> vr1;
-            DoublePointConnection<T> vr2;
-            DoublePointConnection<T> p2 = beg;
+            DoublePointConnection<Organization> p1 = beg;
+            DoublePointConnection<Organization> temp1 = new DoublePointConnection<Organization>(mas[rnd.Next(0, mas.Length - 1)]);
+            DoublePointConnection<Organization> vr1;
+            DoublePointConnection<Organization> vr2;
+            DoublePointConnection<Organization> p2 = beg;
             for (int i = 1; i < nom; i++)
                 p2 = p2.next;
             vr2 = p2;
@@ -100,7 +100,18 @@ namespace Lab12Var4
             p1 = p1.next;
             p1.pred = vr1;
             p1.next = vr2;
-
+        }
+        public void DeleteCollection(T beg)//нужно передать корень коллекции
+        {
+            this.beg = null;
+        }
+        public void FindInColl(T beg1, int employee)
+        {
+            DoublePointConnection<Organization> p = beg;
+            while (p != null)
+                if (p.data.Number_of_employees == employee)
+                    Console.WriteLine(p.ToString());
+            p = p.next;
         }
     }
 }

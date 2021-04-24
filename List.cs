@@ -9,13 +9,13 @@ namespace Lab12Var4
     public class List<T>
     {
 
-        public Point<T> beg = null;
+        public Point<Organization> beg = null;
         public int Length
         {
             get
             {
                 if (beg == null) return 0;
-                Point<T> p = beg; ;
+                Point<Organization> p = beg; ;
                 int len = 0;
                 while (p != null)
                 {
@@ -32,24 +32,24 @@ namespace Lab12Var4
         }
         public List(int size)
         {
-            beg = new Point<T>();
-            Point<T> p = beg;
+            beg = new Point<Organization>();
+            Point<Organization> p = beg;
             for (int i = 1; i < size; i++)
             {
-                Point<T> temp = new Point<T>();
+                Point<Organization> temp = new Point<Organization>();
                 p.next = temp;
                 p = temp;
             }
 
         }
-        public Point<T> last;
-        public List(params T[] mas)
+        public Point<Organization> last;
+        public List(params Organization[] mas)
         {
-            beg = new Point<T>(mas[0]);
-            Point<T> p = beg;
+            beg = new Point<Organization>(mas[0]);
+            Point<Organization> p = beg;
             for (int i = 1; i < mas.Length; i++)
             {
-                Point<T> temp = new Point<T>(mas[i]);
+                Point<Organization> temp = new Point<Organization>(mas[i]);
                 p.next = temp;
                 p = temp;
                 if (p.next == null)
@@ -64,7 +64,7 @@ namespace Lab12Var4
                 return;
 
             }
-            Point<T> p = beg;
+            Point<Organization> p = beg;
             while (p != null)
             {
                 Console.WriteLine(p.data);
@@ -86,7 +86,7 @@ namespace Lab12Var4
 
         public void AddPointToBeg(T d)
         {
-            Point<T> temp = new Point<T>();
+            Point<Organization> temp = new Point<Organization>();
             if (beg == null)
             {
                 beg = temp;
@@ -121,15 +121,15 @@ namespace Lab12Var4
                 Console.WriteLine("Индекс введенного элемента не может быть меньше нуля");
                 return;
             }
-            Point<T> p = beg;
+            Point<Organization> p = beg;
             for (int i = 1; i < nom; i++)
                 p = p.next;
-            Point<T> t = p.next;
+            Point<Organization> t = p.next;
             p.next = t.next;
         }
         public void Delete(int nom)
         {
-            Point<T> ls = beg;
+            Point<Organization> ls = beg;
             if (nom == Count)
             {
                 for (int j = 0; j < Count - 1; j++)
@@ -142,7 +142,7 @@ namespace Lab12Var4
             }
             else
             {
-                Point<T> lst = beg;
+                Point<Organization> lst = beg;
                 for (int t = 0; t < nom; t++)
                 {
                     lst = lst.next;
@@ -155,7 +155,7 @@ namespace Lab12Var4
         {
             get
             {
-                Point<T> k = beg;
+                Point<Organization> k = beg;
                 int count = 1;
                 while (k != beg)
                 {
@@ -191,11 +191,11 @@ namespace Lab12Var4
         //    }
         //}
         static Random rnd = new Random();
-        public void Add(int nom, params T[]mas)
+        public void Add(int nom, params Organization[]mas)
         {
-            Point<T> p1 = beg;
-            Point<T> point = beg;
-            Point<T> d = new Point<T>(mas[rnd.Next(0, mas.Length - 1)]);
+            Point<Organization> p1 = beg;
+            Point<Organization> point = beg;
+            Point<Organization> d = new Point<Organization>(mas[rnd.Next(0, mas.Length - 1)]);
             if (nom == 1)
             {
                 d.next = beg;
@@ -211,6 +211,20 @@ namespace Lab12Var4
             point.next = d;
             point = point.next;
             point.next = p1;
+        }
+        public void DeleteCollection(T beg)//нужно передать корень коллекции
+        {
+            this.beg = null;
+        }
+        public void FindInColl(T beg1, int employee)
+        {
+            Point<Organization> p = beg;
+            while (p != null)
+            {
+                if (p.data.Number_of_employees == employee)
+                    Console.WriteLine(p.ToString());
+                p = p.next;
+            }
         }
     }
 }

@@ -72,17 +72,6 @@ namespace Lab12Var4
             }
             Console.WriteLine();
         }
-        //public void ShowTree(Point<Organization> p, int l)
-        //{
-        //    if (p != null)
-        //    {
-        //        ShowTree(p.left, l + 3);
-        //        for (int i = 0; i < l; i++)
-        //            Console.Write(" ");
-        //        Console.WriteLine(p.data);
-        //        ShowTree(p.right, l + 3);
-        //    }
-        //}
 
         public void AddPointToBeg(T d)
         {
@@ -165,31 +154,6 @@ namespace Lab12Var4
                 return count;
             }
         }
-        //public class FindTree
-        //{
-        //    public class FindPoint<T>
-        //    {
-        //        T data;
-        //        FindPoint<T> left;
-        //        FindPoint<T> right;
-        //        public FindPoint()
-        //        {
-        //            data = default;
-        //            left = null;
-        //            right = null;
-        //        }
-        //        FindPoint(Organization d)
-        //        {
-        //            left = null;
-        //            right = null;
-        //            data = d;
-        //        }
-        //    }
-        //    public static FindTree1()
-        //    {
-
-        //    }
-        //}
         static Random rnd = new Random();
         public void Add(int nom, params Organization[]mas)
         {

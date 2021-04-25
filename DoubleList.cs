@@ -8,6 +8,7 @@ namespace Lab12Var4
 {
     public class DoubleList<T>
     {
+
         public DoubleList()
         { }
         public DoubleList(params Organization[]mas)
@@ -26,6 +27,14 @@ namespace Lab12Var4
         }
         public class DoublePoint<T>
         {
+            public DoublePoint<T> Clone()
+            {
+                return new DoublePoint<T> { data = this.data, next = this.next, pred = this.pred };
+            }
+            public object ClonePoverx()
+            {
+                return this.MemberwiseClone();
+            }
             public T data;
             public DoublePoint<T> next;
             public DoublePoint<T> pred;
@@ -40,6 +49,12 @@ namespace Lab12Var4
                 next = null;
                 data = d;
                 pred = null;
+            }
+            public DoublePoint(DoublePoint<T> dp)
+            {
+                this.data = dp.data;
+                this.next = dp.next;
+                this.pred = dp.pred;
             }
 
             public override string ToString()

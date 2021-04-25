@@ -112,42 +112,13 @@ namespace Lab12Var4
                     r.right = NewPoint;
                 return r;
             }
-            //public Point<Organization> FindTree(Point<Organization> root, params Organization[] mas)
-            //{
-            //    Point<Organization> p = root;
-            //    Point<Organization> r = null;
-            //    bool ok = false;
-            //    for (int i = 0; i < mas.Length; i++)
-            //    {
-            //        Point<Organization> NewPoint = new Point<Organization>(mas[i]);
-            //        while (p != null)
-            //        {
-            //            r = p;
-            //            if (NewPoint.data.Number_of_employees == p.data.Number_of_employees)
-            //                continue;
-            //            else if (NewPoint.data.Number_of_employees > p.data.Number_of_employees)
-            //            {
-            //                p = p.right;
-            //            }
-            //            else if (NewPoint.data.Number_of_employees < p.data.Number_of_employees)
-            //            {
-            //                p = p.left;
-            //            }
-            //        }
-            //        if (NewPoint.data.Number_of_employees > r.data.Number_of_employees)
-            //            r.right = NewPoint;
-            //        else if (NewPoint.data.Number_of_employees < r.data.Number_of_employees)
-            //            r.left = NewPoint;
-            //    }
-            //    //while (p != null && !ok)
-            //    //{
-            //    //    r = p;
-            //    //    if (mas[i].Number_of_employees == p.data.Number_of_employees) ok = true;
-            //    //    else if (mas[i].Number_of_employees < p.data.Number_of_employees) p = p.left;
-            //    //    else p = p.right;
-            //    //}
-            //    if (ok)
-            //}
-        
+        public Point<T> Clone()
+        {
+            return new Point<T> { data = this.data, next = this.next };
+        }
+        public object ClonePoverx()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

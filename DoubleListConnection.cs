@@ -11,6 +11,14 @@ namespace Lab12Var4
         public DoublePointConnection<Organization> beg = null;
         public class DoublePointConnection<T>
         {
+            public DoublePointConnection<T> Clone()
+            {
+                return new DoublePointConnection<T> { data = this.data, next = this.next, pred = this.pred };
+            }
+            public object ClonePoverx()
+            {
+                return this.MemberwiseClone();
+            }
             public T data;
             public DoublePointConnection<Organization> next;
             public DoublePointConnection<Organization> pred;
@@ -30,6 +38,12 @@ namespace Lab12Var4
             public override string ToString()
             {
                 return data.ToString() + " ";
+            }
+            public DoublePointConnection(T data, DoublePointConnection<Organization> next, DoublePointConnection<Organization> pred)
+            {
+                this.data = data;
+                this.next = next;
+                this.pred = pred;
             }
         }
         public DoubleListConnection()

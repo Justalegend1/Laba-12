@@ -1,14 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab12Var4
 {
-    public class List<T>
+    public class List<T>:IEnumerable<T>
     {
-
+        class MyNumerator<T> : IEnumerator<T>
+        {
+            Point<Organization> beg;
+            Point<Organization> current;
+            public MyNumerator(List<T> collection)
+            { 
+                 beg = collection.beg;
+                current = null;
+            }
+            public T Current
+            {
+                get { return current.data; }
+            }
+            object IEnumerator.Current
+            {
+                get { return current; }
+            }
+            public void Dispose()
+            { }
+            public bool MoveNext()
+            {
+                if (current == null)
+                    current = beg;
+                else
+                    current = current.next;
+                return current!= null;
+            }
+            public void Reset()
+            {
+                current = this.beg;
+            }
+        }
         public Point<Organization> beg = null;
         public int Length
         {
@@ -190,5 +222,6 @@ namespace Lab12Var4
                 p = p.next;
             }
         }
+
     }
 }

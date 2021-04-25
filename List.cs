@@ -18,7 +18,7 @@ namespace Lab12Var4
                  beg = collection.beg;
                 current = null;
             }
-            public T Current
+            public Organization Current
             {
                 get { return current.data; }
             }
@@ -26,6 +26,13 @@ namespace Lab12Var4
             {
                 get { return current; }
             }
+
+            T IEnumerator<T>.Current => throw new NotImplementedException();
+            //T IEnumerator<T>.Current
+            //{
+            //    get { throw  new NotImplementedException(); }
+            //}
+
             public void Dispose()
             { }
             public bool MoveNext()
@@ -222,6 +229,15 @@ namespace Lab12Var4
                 p = p.next;
             }
         }
+        //методы для нумератора
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new MyNumerator<T>(this);
+        }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

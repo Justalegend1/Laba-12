@@ -1,13 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab12Var4
 {
-    public class DoubleListConnection<T>
+    public class DoubleListConnection<T>: IEnumerable<T>
     {
+        class MyNumerator<T> : IEnumerator<T>
+        {
+            DoublePointConnection<Organization> beg;
+            DoublePointConnection<Organization> current;
+            public MyNumerator(DoubleListConnection<T> collection)
+            {
+                beg = collection.beg;
+                current = null;
+            }
+            public Organization Current
+            {
+                get { return current.data; }
+            }
+            object IEnumerator.Current
+            {
+                get { return current; }
+            }
+
+            T IEnumerator<T>.Current => throw new NotImplementedException();
+            //T IEnumerator<T>.Current
+            //{
+            //    get { throw  new NotImplementedException(); }
+            //}
+
+            public void Dispose()
+            { }
+            public bool MoveNext()
+            {
+                if (current == null)
+                    current = beg;
+                else
+                    current = current.next;
+                return current != null;
+            }
+            public void Reset()
+            {
+                current = this.beg;
+            }
+        }
         public DoublePointConnection<Organization> beg = null;
         public class DoublePointConnection<T>
         {
@@ -127,5 +167,16 @@ namespace Lab12Var4
                     Console.WriteLine(p.ToString());
             p = p.next;
         }
+        //методы для нумератора
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new MyNumerator<T>(this);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+        //конец методов для нумератора
     }
 }

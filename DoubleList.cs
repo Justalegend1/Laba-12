@@ -58,6 +58,7 @@ namespace Lab12Var4
         {
             throw new NotImplementedException();
         }
+        //конец методов для нумератора
         public DoubleList()
         { }
         public DoubleList(params Organization[]mas)

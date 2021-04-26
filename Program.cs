@@ -126,15 +126,18 @@ namespace Lab12Var4
             Console.WriteLine(org.ToString());
             Console.ReadKey();
             Console.WriteLine("Преобразуем идеальное дерево в дерево поиска");
-            Point<Organization> NewRoot = new Point<Organization>(org);
-            Point<Organization> FindTree = new Point<Organization>();
-            foreach (Organization op in mas)
-                if (op == Point<Organization>.Root.data)
-                    continue;
-                else
-                    FindTree = FindTree.Add(NewRoot, op);
-            Point<Organization>.ShowTree(FindTree, 1);
-            Console.ReadKey();
+                Point<Organization> Root1 = Point<Organization>.Add(null, Point<Organization>.Root.data);
+                    //Point<Organization> NewPoint = new Point<Organization>(Ship);
+                    Point<Organization>.Root = Point<Organization>.Add(null, Point<Organization>.Root.data);
+                    Point<Organization>.recAdd(Point<Organization>.Root, Point<Organization>.Root);
+                    //Point<Organization> FindTree = new Point<Organization>();
+                    //foreach (Organization op in mas)
+                    //    if (op == Point<Organization>.Root.data)
+                    //        continue;
+                    //    else
+                    //        FindTree = Point<Organization>.Add(NewRoot, op);
+                    Point<Organization>.ShowTree(Point<Organization>.Root, 1);
+                    Console.ReadKey();
                     break;
                 case 2:
                     Organization k1 = new Organization();

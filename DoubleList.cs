@@ -1,14 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab12Var4
 {
-    public class DoubleList<T>
+    public class DoubleList<T>: IEnumerable<T>
     {
+        class MyNumerator<T> : IEnumerator<T>
+        {
+            DoublePoint<Organization> beg;
+            DoublePoint<Organization> current;
+            public MyNumerator(DoubleList<T> collection)
+            {
+                beg = collection.beg;
+                current = null;
+            }
+            public Organization Current
+            {
+                get { return current.data; }
+            }
+            object IEnumerator.Current
+            {
+                get { return current; }
+            }
 
+            T IEnumerator<T>.Current => throw new NotImplementedException();
+            //T IEnumerator<T>.Current
+            //{
+            //    get { throw  new NotImplementedException(); }
+            //}
+
+            public void Dispose()
+            { }
+            public bool MoveNext()
+            {
+                if (current == null)
+                    current = beg;
+                else
+                    current = current.next;
+                return current != null;
+            }
+            public void Reset()
+            {
+                current = this.beg;
+            }
+        }
+        //методы для нумератора двусвязного списка
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new MyNumerator<T>(this);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
         public DoubleList()
         { }
         public DoubleList(params Organization[]mas)

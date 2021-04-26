@@ -64,11 +64,11 @@ namespace Lab12Var4
             {
                 if (p != null)
                 {
-                    ShowTree(p.left, l + 3);
+                    ShowTree(p.left, l + 7);
                     for (int i = 0; i < l; i++)
                         Console.Write(" ");
                     Console.WriteLine(p.data.Number_of_employees);
-                    ShowTree(p.right, l + 3);
+                    ShowTree(p.right, l + 7);
                 }
             }
             int min = Int32.MaxValue;
@@ -92,9 +92,10 @@ namespace Lab12Var4
                 Point<Organization> p = new Point<Organization>(d);
                 return p;
             }
-            public Point<Organization> Add(Point<Organization> root, Organization d)
+           static public Point<Organization> Add(Point<Organization> root, Organization d)
             {
-                Point<Organization> p = root;
+            if (root == null) return new Point<Organization>(d);
+            Point<Organization> p = root;
                 Point<Organization> r = null;
                 bool ok = false;
                 while (p != null && !ok)
@@ -110,8 +111,21 @@ namespace Lab12Var4
                     r.left = NewPoint;
                 else
                     r.right = NewPoint;
-                return r;
+                return NewPoint;
             }
+        public static void recAdd(Point<Organization> root, Point<Organization> NewPoint)
+        {
+            if (NewPoint.left != null)
+            {
+                Point<T>.Add(root, NewPoint.left.data);
+                recAdd(root, NewPoint.left);
+            }
+            if (NewPoint.right != null)
+            {
+                Point<T>.Add(root, NewPoint.right.data);
+                recAdd(root, NewPoint.right);
+            }
+        }
         public Point<T> Clone()
         {
             return new Point<T> { data = this.data, next = this.next };

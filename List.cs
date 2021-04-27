@@ -11,14 +11,14 @@ namespace Lab12Var4
     {
         class MyNumerator<T> : IEnumerator<T>
         {
-            Point<Organization> beg;
-            Point<Organization> current;
+            Point<T> beg;
+            Point<T> current;
             public MyNumerator(List<T> collection)
             { 
                  beg = collection.beg;
                 current = null;
             }
-            public Organization Current
+            public T Current
             {
                 get { return current.data; }
             }
@@ -30,7 +30,7 @@ namespace Lab12Var4
             T IEnumerator<T>.Current => throw new NotImplementedException();
             //T IEnumerator<T>.Current
             //{
-            //    get { throw  new NotImplementedException(); }
+            //    get { throw new NotImplementedException(); }
             //}
 
             public void Dispose()
@@ -48,13 +48,13 @@ namespace Lab12Var4
                 current = this.beg;
             }
         }
-        public Point<Organization> beg = null;
+        public Point<T> beg = null;
         public int Length
         {
             get
             {
                 if (beg == null) return 0;
-                Point<Organization> p = beg; ;
+                Point<T> p = beg; ;
                 int len = 0;
                 while (p != null)
                 {
@@ -71,28 +71,26 @@ namespace Lab12Var4
         }
         public List(int size)
         {
-            beg = new Point<Organization>();
-            Point<Organization> p = beg;
+            beg = new Point<T>();
+            Point<T> p = beg;
             for (int i = 1; i < size; i++)
             {
-                Point<Organization> temp = new Point<Organization>();
+                Point<T> temp = new Point<T>();
                 p.next = temp;
                 p = temp;
             }
 
         }
         public Point<Organization> last;
-        public List(params Organization[] mas)
+        public List(params T[] mas)
         {
-            beg = new Point<Organization>(mas[0]);
-            Point<Organization> p = beg;
+            beg = new Point<T>(mas[0]);
+            Point<T> p = beg;
             for (int i = 1; i < mas.Length; i++)
             {
-                Point<Organization> temp = new Point<Organization>(mas[i]);
+                Point<T> temp = new Point<T>(mas[i]);
                 p.next = temp;
                 p = temp;
-                if (p.next == null)
-                    last = p;
             }
         }
         public void PrintList()
@@ -103,7 +101,7 @@ namespace Lab12Var4
                 return;
 
             }
-            Point<Organization> p = beg;
+            Point<T> p = beg;
             while (p != null)
             {
                 Console.WriteLine(p.data);
@@ -114,7 +112,7 @@ namespace Lab12Var4
 
         public void AddPointToBeg(T d)
         {
-            Point<Organization> temp = new Point<Organization>();
+            Point<T> temp = new Point<T>();
             if (beg == null)
             {
                 beg = temp;
@@ -149,15 +147,15 @@ namespace Lab12Var4
                 Console.WriteLine("Индекс введенного элемента не может быть меньше нуля");
                 return;
             }
-            Point<Organization> p = beg;
+            Point<T> p = beg;
             for (int i = 1; i < nom; i++)
                 p = p.next;
-            Point<Organization> t = p.next;
+            Point<T> t = p.next;
             p.next = t.next;
         }
         public void Delete(int nom)
         {
-            Point<Organization> ls = beg;
+            Point<T> ls = beg;
             if (nom == Count)
             {
                 for (int j = 0; j < Count - 1; j++)
@@ -170,7 +168,7 @@ namespace Lab12Var4
             }
             else
             {
-                Point<Organization> lst = beg;
+                Point<T> lst = beg;
                 for (int t = 0; t < nom; t++)
                 {
                     lst = lst.next;
@@ -183,7 +181,7 @@ namespace Lab12Var4
         {
             get
             {
-                Point<Organization> k = beg;
+                Point<T> k = beg;
                 int count = 1;
                 while (k != beg)
                 {
@@ -194,11 +192,11 @@ namespace Lab12Var4
             }
         }
         static Random rnd = new Random();
-        public void Add(int nom, params Organization[]mas)
+        public void Add(int nom, params T[]mas)
         {
-            Point<Organization> p1 = beg;
-            Point<Organization> point = beg;
-            Point<Organization> d = new Point<Organization>(mas[rnd.Next(0, mas.Length - 1)]);
+            Point<T> p1 = beg;
+            Point<T> point = beg;
+            Point<T> d = new Point<T>(mas[rnd.Next(0, mas.Length - 1)]);
             if (nom == 1)
             {
                 d.next = beg;
@@ -219,16 +217,16 @@ namespace Lab12Var4
         {
             this.beg = null;
         }
-        public void FindInColl(T beg1, int employee)
-        {
-            Point<Organization> p = beg;
-            while (p != null)
-            {
-                if (p.data.Number_of_employees == employee)
-                    Console.WriteLine(p.ToString());
-                p = p.next;
-            }
-        }
+        //public void FindInColl(T beg1, int employee)
+        //{
+        //    Point<T> p = beg;
+        //    while (p != null)
+        //    {
+        //        if (p.data.Number_of_employees == employee)
+        //            Console.WriteLine(p.ToString());
+        //        p = p.next;
+        //    }
+        //}
         //методы для нумератора
         public IEnumerator<T> GetEnumerator()
         {

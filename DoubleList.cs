@@ -11,14 +11,14 @@ namespace Lab12Var4
     {
         class MyNumerator<T> : IEnumerator<T>
         {
-            DoublePoint<Organization> beg;
-            DoublePoint<Organization> current;
+            DoublePoint<T> beg;
+            DoublePoint<T> current;
             public MyNumerator(DoubleList<T> collection)
             {
                 beg = collection.beg;
                 current = null;
             }
-            public Organization Current
+            public T Current
             {
                 get { return current.data; }
             }
@@ -27,7 +27,7 @@ namespace Lab12Var4
                 get { return current; }
             }
 
-            T IEnumerator<T>.Current => throw new NotImplementedException();
+            //T IEnumerator<T>.Current => throw new NotImplementedException();
             //T IEnumerator<T>.Current
             //{
             //    get { throw  new NotImplementedException(); }
@@ -61,15 +61,15 @@ namespace Lab12Var4
         //конец методов для нумератора
         public DoubleList()
         { }
-        public DoubleList(params Organization[]mas)
+        public DoubleList(params T[]mas)
         {
-            beg = new DoublePoint<Organization>(mas[0]);
-            DoublePoint<Organization> p = beg;
+            beg = new DoublePoint<T>(mas[0]);
+            DoublePoint<T> p = beg;
             for (int i = 1; i < mas.Length; i++)
             {
                
-                DoublePoint<Organization> temp = new DoublePoint<Organization>(mas[i]);
-                DoublePoint<Organization> vr = new DoublePoint<Organization>(mas[i - 1]);
+                DoublePoint<T> temp = new DoublePoint<T>(mas[i]);
+                DoublePoint<T> vr = new DoublePoint<T>(mas[i - 1]);
                 p.next = temp;
                 p = temp;
                 p.pred = vr;
@@ -112,7 +112,7 @@ namespace Lab12Var4
                 return data.ToString() + " ";
             }
         }
-            public DoublePoint<Organization> beg = null;
+            public DoublePoint<T> beg = null;
             public void PrintList()
             {
                 if (beg == null)
@@ -121,7 +121,7 @@ namespace Lab12Var4
                     return;
 
                 }
-                DoublePoint<Organization> p = beg;
+                DoublePoint<T> p = beg;
                 while (p != null)
                 {
                     Console.WriteLine(p);
@@ -131,8 +131,8 @@ namespace Lab12Var4
             }
         public void Delete(int nom)
         {
-            DoublePoint<Organization> dp1;
-            DoublePoint<Organization> dp = beg;
+            DoublePoint<T> dp1;
+            DoublePoint<T> dp = beg;
             for (int t = 0; t < nom; t++)
             {
                 dp = dp.next;
@@ -143,13 +143,13 @@ namespace Lab12Var4
             dp.pred = dp1;
         }
         static Random rnd = new Random();
-        public void Add(int nom, params Organization[]mas)
+        public void Add(int nom, params T[]mas)
         {
-            DoublePoint<Organization> p1 = beg;
-            DoublePoint<Organization> temp1 = new DoublePoint<Organization>(mas[rnd.Next(0,mas.Length-1)]);
-            DoublePoint<Organization> vr1;
-            DoublePoint<Organization> vr2;
-            DoublePoint<Organization> p2 = beg;
+            DoublePoint<T> p1 = beg;
+            DoublePoint<T> temp1 = new DoublePoint<T>(mas[rnd.Next(0,mas.Length-1)]);
+            DoublePoint<T> vr1;
+            DoublePoint<T> vr2;
+            DoublePoint<T> p2 = beg;
             for (int i = 1; i < nom; i++)
                 p2 = p2.next;
             vr2 = p2;
@@ -165,7 +165,7 @@ namespace Lab12Var4
         {
             this.beg = null;
         }
-        public void FindInColl(T beg1, int employee)
+        public void FindInColl(DoublePoint<Organization> beg, int employee)
         {
             DoublePoint<Organization> p = beg;
             while (p != null)

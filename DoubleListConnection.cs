@@ -11,14 +11,14 @@ namespace Lab12Var4
     {
         class MyNumerator<T> : IEnumerator<T>
         {
-            DoublePointConnection<Organization> beg;
-            DoublePointConnection<Organization> current;
+            DoublePointConnection<T> beg;
+            DoublePointConnection<T> current;
             public MyNumerator(DoubleListConnection<T> collection)
             {
                 beg = collection.beg;
                 current = null;
             }
-            public Organization Current
+            public T Current
             {
                 get { return current.data; }
             }
@@ -27,7 +27,7 @@ namespace Lab12Var4
                 get { return current; }
             }
 
-            T IEnumerator<T>.Current => throw new NotImplementedException();
+            //T IEnumerator<T>.Current => throw new NotImplementedException();
             //T IEnumerator<T>.Current
             //{
             //    get { throw  new NotImplementedException(); }
@@ -60,8 +60,8 @@ namespace Lab12Var4
                 return this.MemberwiseClone();
             }
             public T data;
-            public DoublePointConnection<Organization> next;
-            public DoublePointConnection<Organization> pred;
+            public DoublePointConnection<T> next;
+            public DoublePointConnection<T> pred;
             public DoublePointConnection()
             {
                 data = default;
@@ -79,7 +79,7 @@ namespace Lab12Var4
             {
                 return data.ToString() + " ";
             }
-            public DoublePointConnection(T data, DoublePointConnection<Organization> next, DoublePointConnection<Organization> pred)
+            public DoublePointConnection(T data, DoublePointConnection<T> next, DoublePointConnection<T> pred)
             {
                 this.data = data;
                 this.next = next;

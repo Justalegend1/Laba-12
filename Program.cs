@@ -150,6 +150,11 @@ namespace Lab12Var4
                     Console.WriteLine("Кольцевой двусвязный список");
                     DoubleListConnection<Organization> list3 = new DoubleListConnection<Organization>(mas4);
                     Console.ReadKey();
+                    Console.WriteLine("Перебор элементов коллекции");
+                    List<Organization> list_ = new List<Organization>(mas4);
+                    foreach (Organization op in list_)
+                        Console.WriteLine(op);
+                    Console.ReadKey();
                     break;
         }
         }

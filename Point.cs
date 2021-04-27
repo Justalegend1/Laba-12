@@ -10,7 +10,7 @@ namespace Lab12Var4
     {
             public Point<T> left;
             public Point<T> right;
-            public Organization data;
+            public T data;
             public Point<T> next;
             public Point()
             {
@@ -18,7 +18,7 @@ namespace Lab12Var4
                 next = null;
 
             }
-            public Point(Organization d)
+            public Point(T d)
             {
                 data = d;
                 next = null;

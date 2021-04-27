@@ -127,9 +127,8 @@ namespace Lab12Var4
             Console.WriteLine(org.ToString());
             Console.ReadKey();
             Console.WriteLine("Преобразуем идеальное дерево в дерево поиска");
-                Point<Organization> Root1 = Point<Organization>.Add(null, Point<Organization>.Root.data);
                     //Point<Organization> NewPoint = new Point<Organization>(Ship);
-                    Point<Organization>.Root = Point<Organization>.Add(null, Point<Organization>.Root.data);
+                    //Point<Organization>.Root = Point<Organization>.Add(null, Point<Organization>.Root.data);
                     Point<Organization>.recAdd(Point<Organization>.Root, Point<Organization>.Root);
                     //Point<Organization> FindTree = new Point<Organization>();
                     //foreach (Organization op in mas)
@@ -137,17 +136,36 @@ namespace Lab12Var4
                     //        continue;
                     //    else
                     //        FindTree = Point<Organization>.Add(NewRoot, op);
+                    for (int d = 0; d < mas.Length; d++)
+                    {
+                        Point<Organization> NewPoint = new Point<Organization>(mas[d]);
+                        Point<Organization>.Add(Point<Organization>.Root, mas[d]);
+                    }
                     Point<Organization>.ShowTree(Point<Organization>.Root, 1);
                     Console.ReadKey();
                     break;
                 case 2:
+                    Point<Organization> p4 = new Point<Organization>();
+                    Console.WriteLine("Введите размер дерева");
+                    bool o2 = Int32.TryParse(Console.ReadLine(), out size);
+                    while (!o2)
+                    {
+                        Console.WriteLine("Введите число");
+                        o2 = Int32.TryParse(Console.ReadLine(), out size);
+                    }
+                    while (size < 0)
+                    {
+                        Console.WriteLine("Введите положительное число");
+                        o2 = Int32.TryParse(Console.ReadLine(), out size);
+                    }
+                    Tree = Point<Organization>.IdealTree1(size, p4);
                     Organization k1 = new Organization();
                     Organization Org1 = new Organization("Организация", 235);
                     Factory Fac1 = new Factory("Фабрика", 450, 35, "Лондон");
                     Insurance_Company Ins1 = new Insurance_Company("Страховая компания", 600, 1990, 98);
                     Library Lib1 = new Library("Библиотека", 500, 7, 700);
-                    Shipbuilding_company Ship1 = new Shipbuilding_company("Кораблестроительная фирма", 490, 900000, 35);
-                    Organization[] mas4 = new Organization[5] { Org1, Fac1, Ins1, Lib1, Ship1 };
+                    Shipbuilding_company Ship1 = new Shipbuilding_company("Кораблестроительная фирма", 500, 900000, 35);
+                    Organization[] mas4 = new Organization[5] { Org1, Fac1, Ins1, Lib1, Ship1};
                     Console.WriteLine("Кольцевой двусвязный список");
                     DoubleListConnection<Organization> list3 = new DoubleListConnection<Organization>(mas4);
                     Console.ReadKey();
@@ -156,12 +174,12 @@ namespace Lab12Var4
                     foreach (Organization op in list_)
                         Console.WriteLine(op);
                     Console.ReadKey();
-                    AVLTree<int> Oak = new AVLTree<int>();
-                    Oak.Add(235);
-                    Oak.Add(500);
-                    Oak.Add(450);
-                    Oak.Add(700);
-                    AVLTreeNode<Organization>.ShowTree();
+                    Point<Organization> Root1 = Point<Organization>.Root;
+                    Root1.right = null;
+                    Root1.left = null;
+                    for (int t = 0; t < mas4.Length; t++)
+                        Point<Organization>.Add(Root1, mas4[t]);
+                    Point<Organization>.ShowTree(Root1, 1);
                     Console.ReadKey();
                     break;
         }

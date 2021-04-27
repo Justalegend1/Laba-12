@@ -94,18 +94,19 @@ namespace Lab12Var4
             }
            static public Point<Organization> Add(Point<Organization> root, Organization d)
             {
-            if (root == null) return new Point<Organization>(d);
-            Point<Organization> p = root;
+           
+                
                 Point<Organization> r = null;
                 bool ok = false;
-                while (p != null && !ok)
+                while (root != null && !ok)
                 {
-                    r = p;
-                    if (d.Number_of_employees == p.data.Number_of_employees) ok = true;
-                    else if (d.Number_of_employees < p.data.Number_of_employees) p = p.left;
-                    else p = p.right;
+                    r = root;
+                if (d.Number_of_employees == root.data.Number_of_employees) ok = true;
+                else if (d.Number_of_employees < root.data.Number_of_employees) root = root.left;
+                else if (d.Number_of_employees > root.data.Number_of_employees) root = root.right;
+                else ok = true;
                 }
-                if (ok) return p;
+                if (ok) return root;
                 Point<Organization> NewPoint = MakePoint(d);
                 if (d.Number_of_employees < r.data.Number_of_employees)
                     r.left = NewPoint;
@@ -113,6 +114,39 @@ namespace Lab12Var4
                     r.right = NewPoint;
                 return NewPoint;
             }
+
+        public static void AddTo(Point<Organization> root/*исходный корень нашей коллекции*/, Organization d/*новый элемент в нашем дереве поиска*/)
+        {
+            Point<Organization> r = null;
+
+            while (root != null)
+            {
+                //Point< Organization > r1 = null; 
+                //if (d.Number_of_employees == root.data.Number_of_employees) continue;
+                /*else*/ if (d.Number_of_employees < root.data.Number_of_employees) root = root.left;
+                else if (d.Number_of_employees > root.data.Number_of_employees) root = root.right;
+                Point<Organization> NewPoint = MakePoint(d);
+                if (NewPoint.data.Number_of_employees < root.data.Number_of_employees)
+                    root.left = NewPoint;
+                else if(NewPoint.data.Number_of_employees > root.data.Number_of_employees)
+                    root.right = NewPoint;
+            }
+        }
+        static public void MakeSearchTree(int nom/*длина дерева*/, Point<T> root/* корень дерева*/ )
+        {
+            for (int i = 1; i < nom; i++)
+            {
+                Organization OrganizationForCreate = GetInfo1();
+                Add(Root, OrganizationForCreate);
+            }
+        }
+        //создание случайного элемента
+        public static Organization GetInfo1()
+        {
+            Organization info = new Organization();
+            info = (Organization)info.Init();
+            return info;
+        }
         public static void recAdd(Point<Organization> root, Point<Organization> NewPoint)
         {
             if (NewPoint.left != null)

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lab12Var4.DoubleList&lt;T&gt;">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Lab12Var4.DoubleList&lt;T&gt;.MyNumerator&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DoubleList.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="Lab12Var4.DoubleList&lt;T&gt;.DoublePoint&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DoubleList.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIEEAAAAAAAABAEAAAAAgAAAAEAAAAEBAAAAAAAAAA=</HashCode>
+      <FileName>DoubleList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lab12Var4.DoubleListConnection&lt;T&gt;">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Lab12Var4.DoubleListConnection&lt;T&gt;.MyNumerator&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DoubleListConnection.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="Lab12Var4.DoubleListConnection&lt;T&gt;.DoublePointConnection&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DoubleListConnection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIEEAAAAAAAABAEAAAAAgQAAAEAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DoubleListConnection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lab12Var4.List&lt;T&gt;">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Lab12Var4.List&lt;T&gt;.MyNumerator&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>List.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIEEgAAAAAAABAAAABAAgRAAAEAAAAEBAAAAAAAAgA=</HashCode>
+      <FileName>List.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lab12Var4.Point&lt;T&gt;">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEBAAAAAAQAGAEBAAAAAIAAAAoAEAAAAARAAIAwBI=</HashCode>
+      <FileName>Point.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Lab12Var4.IInit">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAAA=</HashCode>
+      <FileName>IInit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -15,7 +15,7 @@ namespace Lab12Var4
             DoublePoint<T> current;
             public MyNumerator(DoubleList<T> collection)
             {
-                beg = collection.beg;
+                //beg = collection.beg;
                 current = null;
             }
             public T Current
@@ -56,7 +56,7 @@ namespace Lab12Var4
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
         //конец методов для нумератора
         public DoubleList()

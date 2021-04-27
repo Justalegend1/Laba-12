@@ -15,7 +15,7 @@ namespace Lab12Var4
             DoublePointConnection<T> current;
             public MyNumerator(DoubleListConnection<T> collection)
             {
-                beg = collection.beg;
+                //beg = collection.beg;
                 current = null;
             }
             public T Current
@@ -172,11 +172,11 @@ namespace Lab12Var4
         {
             return new MyNumerator<T>(this);
         }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    throw new NotImplementedException();
+        //}
         //конец методов для нумератора
     }
 }

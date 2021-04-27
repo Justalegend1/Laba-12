@@ -46,6 +46,7 @@
     <Compile Include="DoubleList.cs" />
     <Compile Include="DoubleListConnection.cs" />
     <Compile Include="Factory.cs" />
+    <Compile Include="FindTree.cs" />
     <Compile Include="IdealTree.cs" />
     <Compile Include="IInit.cs" />
     <Compile Include="Insurance_Company.cs" />
@@ -59,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

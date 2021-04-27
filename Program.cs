@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime;
+using static Lab12Var4.FindTree;
 
 namespace Lab12Var4
 {
@@ -154,6 +155,13 @@ namespace Lab12Var4
                     List<Organization> list_ = new List<Organization>(mas4);
                     foreach (Organization op in list_)
                         Console.WriteLine(op);
+                    Console.ReadKey();
+                    AVLTree<int> Oak = new AVLTree<int>();
+                    Oak.Add(235);
+                    Oak.Add(500);
+                    Oak.Add(450);
+                    Oak.Add(700);
+                    AVLTreeNode<Organization>.ShowTree();
                     Console.ReadKey();
                     break;
         }

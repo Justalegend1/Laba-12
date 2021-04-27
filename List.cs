@@ -27,7 +27,7 @@ namespace Lab12Var4
                 get { return current; }
             }
 
-            T IEnumerator<T>.Current => throw new NotImplementedException();
+            //T IEnumerator<T>.Current => throw new NotImplementedException();
             //T IEnumerator<T>.Current
             //{
             //    get { throw new NotImplementedException(); }
@@ -227,6 +227,9 @@ namespace Lab12Var4
         //        p = p.next;
         //    }
         //}
+
+
+
         //методы для нумератора
         public IEnumerator<T> GetEnumerator()
         {
